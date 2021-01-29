@@ -1,12 +1,8 @@
 from django.urls import path, include
-from rest_framework import routers
+from django.contrib import admin
 from todos import views
 
-router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'tasks', views.TaskViewSet)
-
 urlpatterns = [
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('', include('todos.urls')),
+    path('admin/', admin.site.urls)
 ]
